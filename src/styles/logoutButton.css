@@ -1,0 +1,38 @@
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .button:hover {
+    background-color: #0056b3; 
+  }
+  
+  .button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+.logoutBtn {
+  display: flex;
+  justify-content: right;
+  margin-top: 20px; 
+  margin-right: 40px;
+}
+
+.logoutBtn .button {
+  background-color: #00BCD4; 
+  color: #ffffff;
+  margin-bottom: 20px; /**/
+}
+
+.logoutBtn .button:hover {
+  background-color: #0097A7; 
+}

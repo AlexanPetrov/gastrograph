@@ -1,0 +1,74 @@
+.recipe-upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F2E8D5;
+    padding: 40px 75px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+}
+
+.recipe-upload-form label {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.recipe-upload-form input,
+.recipe-upload-form select,
+.recipe-upload-form textarea {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.recipe-upload-form textarea {
+    resize: vertical;
+    padding: 10px;
+}
+
+.recipe-upload-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #00BCD4;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.recipe-upload-form button:hover {
+    background-color: #0097A7;
+}
+
+.recipe-upload-form button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.recipe-upload-form-title {
+    color: #00BCD4;
+    font-weight: bold;
+    font-size: 35px;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.recipe-upload-form input:focus,
+.recipe-upload-form select:focus,
+.recipe-upload-form textarea:focus {
+    border-color: #00BCD4;
+    outline: none;
+}
+
+.recipe-upload-form input::placeholder,
+.recipe-upload-form select::placeholder,
+.recipe-upload-form textarea::placeholder {
+    font-family: 'Georgia', serif;
+}

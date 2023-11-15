@@ -1,0 +1,24 @@
+.join-us-title {
+    color: transparent;
+}
+
+.join-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    color: #fff;
+    margin-top: 200px;
+}
+
+.join-page-background {
+    background-image: url('/reset-password.jpg');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
