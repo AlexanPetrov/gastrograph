@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import NotFound from './notfound.jsx';
-import Button from '../components/Button.jsx';
-import RecipeCard from '../components/RecipeCard.jsx';
+import Button from '../../components/Button.jsx';
+import RecipeCard from '../../components/RecipeCard.jsx';
 import '../styles/recipes.css';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import RecipeUploadForm from '../components/RecipeUploadForm.jsx';
+import RecipeUploadForm from '../../components/RecipeUploadForm.jsx';
 
 
 const Recipes = ({ isLoggedIn, onLogout }) => {

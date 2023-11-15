@@ -1,4 +1,4 @@
-import Form from '../components/Form.jsx';
+import Form from '../../components/Form.jsx';
 import '../styles/join.css';
 import PropTypes from 'prop-types';
 
