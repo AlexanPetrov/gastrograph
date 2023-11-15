@@ -2,7 +2,6 @@ import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 import Join from './pages/join.jsx';
 import About from './pages/about.jsx';
 import Home from './pages/home.jsx';
