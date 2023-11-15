@@ -3,7 +3,6 @@ import '../styles/about.css'
 const About = () => {
 	return (
 		<div className="about-container">
-			{/* <h1>Our Story</h1> */}
 			<img src="/romantic-foods-couple-gourmet-1024x576.jpg.webp" alt="A loving couple cooking together" className="about-image" />
 			<div className="about-text">
 				<p>{"Once upon a time in a small, coastal town, two souls met in a place where magic happens every day - the local farmer's market. Surrounded by the vibrant colors of fresh produce and the inviting aromas of homemade pastries, their eyes locked. It was love at first sight. The world seemed to stop, and in that moment, they felt a connection that went beyond mere attraction."}</p>

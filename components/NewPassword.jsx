@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/NewPassword.css'; // Make sure this path is correct
+import '../styles/NewPassword.css'; 
 
 const NewPassword = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -33,7 +33,7 @@ const NewPassword = () => {
       }
 
       setMessage('Password has been successfully reset.');
-      setTimeout(() => navigate('/join'), 3000); // Redirect after 3 seconds
+      setTimeout(() => navigate('/join'), 3000); 
     } catch (error) {
       setMessage(error.toString());
     }

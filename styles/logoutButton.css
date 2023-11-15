@@ -30,7 +30,7 @@
 .logoutBtn .button {
   background-color: #00BCD4; 
   color: #ffffff;
-  margin-bottom: 20px; /**/
+  margin-bottom: 20px; 
 }
 
 .logoutBtn .button:hover {
