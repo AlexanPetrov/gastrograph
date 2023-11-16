@@ -1,9 +1,10 @@
 import '../styles/about.css'
+import romanticCoupleImage from '../../public/romantic-couple.jpg';
 
 const About = () => {
 	return (
 		<div className="about-container">
-			<img src="/romantic-couple.jpg" alt="Couple at a dinner table" className="about-image" />
+			<img src={romanticCoupleImage} alt="Couple at a dinner table" className="about-image" />
 			<div className="about-text">
 				<p>{"Once upon a time in a small, coastal town, two souls met in a place where magic happens every day - the local farmer's market. Surrounded by the vibrant colors of fresh produce and the inviting aromas of homemade pastries, their eyes locked. It was love at first sight. The world seemed to stop, and in that moment, they felt a connection that went beyond mere attraction."}</p>
 				<p>{"Their first date was a culinary adventure, a homemade dinner where they laughed, shared stories, and discovered their shared passion for culinary delights. They enjoyed exploring different flavors from around the world, finding joy in the blend of spices, the sizzle of a pan, and the taste of something extraordinary. As they journeyed through various cuisines, their love for each other deepened, seasoned with affection, marinated in trust, and garnished with shared dreams."}</p>
