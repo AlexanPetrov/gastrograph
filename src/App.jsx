@@ -33,7 +33,7 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/gastrograph/">
       <div className="App-class">
         <NavBar />
         <div id="App-id">
