@@ -8,14 +8,25 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
-    try {
-      const response = await fetch('http://localhost:3000/auth/request-reset-password', {
+    // try {
+    //   const response = await fetch('http://localhost:3000/auth/request-reset-password', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ email }),
+    //   });
+
+    const backendUrl = 'https://gastrographbackend.onrender.com'; 
+
+try {
+    const response = await fetch(`${backendUrl}/auth/request-reset-password`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email }),
-      });
+    });
 
       const data = await response.json();
 

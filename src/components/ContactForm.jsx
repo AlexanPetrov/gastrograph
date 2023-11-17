@@ -9,14 +9,25 @@ const ContactForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); 
   
-    try {
-      const response = await fetch('http://localhost:3000/contact/submit', {
+    // try {
+    //   const response = await fetch('http://localhost:3000/contact/submit', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ name, email, message }),
+    //   });
+
+    const backendUrl = 'https://gastrographbackend.onrender.com'; 
+
+try {
+    const response = await fetch(`${backendUrl}/contact/submit`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, email, message }),
-      });
+    });
   
       if (response.ok) {
         setName('');
