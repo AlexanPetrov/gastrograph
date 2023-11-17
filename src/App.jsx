@@ -33,8 +33,7 @@ const App = () => {
   };
 
   return (
-    // <BrowserRouter basename="/gastrograph/">
-    <BrowserRouter>
+    <BrowserRouter basename="/gastrograph/">
       <div className="App-class">
         <NavBar />
         <div id="App-id">
