@@ -59,8 +59,8 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
-    // return <p></p>;
+    // return <p>Loading...</p>;
+    return <p></p>;
   }
 
   const selectedRecipe = recipes.find((r) => r.id === recipeId);
