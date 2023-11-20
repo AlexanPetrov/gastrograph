@@ -5,28 +5,24 @@ import '../styles/home.css';
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
-  const [isLoading, setIsLoading] = useState(true); // Added for loading state
 
   useEffect(() => {
-    const fetchRecipes = async () => {
-      const backendUrl = 'https://gastrographbackend.onrender.com';
+    // Hardcoded data for testing
+    setRecipes([
+      {
+        _id: '1',
+        title: 'Test Recipe 1',
+        imageURL: "https://www.curiouscuisiniere.com/wp-content/uploads/2019/02/Russian-Fish-Soup-Ukha-pin.jpg.webp",
+      },
+      {
+        _id: '2',
+        title: 'Test Recipe 2',
+        imageURL: "https://cafedelites.com/wp-content/uploads/2018/11/Cream-of-Mushroom-Soup-IMAGE-135.jpg",
+      },
+      // Add more objects as needed
+    ]);
 
-      try {
-        const response = await fetch(`${backendUrl}/recipes`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log("Fetched Recipes:", data); // Log fetched data
-        setRecipes(data);
-      } catch (error) {
-        console.error('Error fetching recipes:', error);
-      } finally {
-        setIsLoading(false); // Set loading to false after fetching
-      }
-    };
-
-    fetchRecipes();
+    setCurrentImage(0); // Reset current image index
   }, []);
 
   useEffect(() => {
@@ -38,40 +34,40 @@ const Home = () => {
     }
   }, [recipes.length]);
 
-  // Diagnostic render
   return (
     <>
       <div className="home-container">
-        {isLoading ? (
-          <p>Loading recipes...</p>
-        ) : recipes.length > 0 ? (
-          <div className="image-gallery">
+        <div className="image-gallery">
+          {recipes.length > 0 && (
             <Link to={`/recipes/${recipes[currentImage]._id}`}>
               <img src={recipes[currentImage].imageURL}
                    alt={recipes[currentImage].title}
                    title={recipes[currentImage].title} />
             </Link>
-            <div className="dots">
-              {recipes.map((_, index) => (
-                <span
-                  key={index}
-                  className={index === currentImage ? 'active-dot' : 'dot'}
-                  onClick={() => setCurrentImage(index)}
-                />
-              ))}
-            </div>
+          )}
+          <div className="dots">
+            {recipes.map((_, index) => (
+              <span
+                key={index}
+                className={index === currentImage ? 'active-dot' : 'dot'}
+                onClick={() => setCurrentImage(index)}
+              />
+            ))}
           </div>
-        ) : (
-          <p>No recipes available.</p>
-        )}
-        {/* ... other content ... */}
+        </div>
+        <div className="welcome-text">
+          {/* Your welcome text content */}
+        </div>
       </div>
-      {/* ... other content ... */}
+      <div className='home-moral-class'>
+        {/* Your moral class content */}
+      </div>
     </>
   );
 }
 
 export default Home;
+
 
 
 
