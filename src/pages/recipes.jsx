@@ -63,7 +63,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     return <p></p>;
   }
 
-  const selectedRecipe = recipes.find((r) => r._id === recipeId);
+  const selectedRecipe = recipes.find((r) => r.id === recipeId);
 
   if (recipeId && selectedRecipe) {
     return (
@@ -143,7 +143,7 @@ fetch(`${backendUrl}/recipes`, {
       <div className="recipe-page">
         <div className="recipe-page-wrapper">
           {displayedRecipes.map((recipe) => (
-            <Link to={`/recipes/${recipe._id}`} key={recipe._id}>
+            <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
               <RecipeCard recipe={recipe} />
             </Link>
           ))}
