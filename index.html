@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="script-src 'self' 'unsafe-inline'"
+      content="
+    default-src 'none';
+    script-src 'self';  
+    connect-src 'self' https://gastrographbackend.onrender.com https://*.mongodb.net; 
+    img-src 'self' https://*.githubusercontent.com; 
+    style-src 'self' 'unsafe-inline'; 
+    font-src 'self'; 
+"
     />
     <title>Vite + React</title>
     <script type="module" crossorigin src="/gastrograph/assets/index-6fe6b310.js"></script>
