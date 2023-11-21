@@ -48,7 +48,7 @@ try {
       <div className="home-container">
         <div className="image-gallery">
           {recipes.length > 0 && (
-            <Link to={`/recipes/${recipes[currentImage]._id}`}>
+            <Link to={`/recipes/${recipes[currentImage].id}`}>
               <img src={recipes[currentImage].imageURL} 
                    alt={recipes[currentImage].title} 
                    title={recipes[currentImage].title}/>
