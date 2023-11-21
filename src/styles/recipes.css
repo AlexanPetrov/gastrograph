@@ -12,7 +12,7 @@
     justify-content: flex-start; 
     max-width: 100%; 
     padding: 0; 
-    margin: auto;
+    margin-left: 30px;
 }
 
 .recipe-page-item {
