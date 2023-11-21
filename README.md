@@ -1,3 +1,5 @@
+Backend is on Render, and Free instance types will spin down with inactivity, so be patiant for images to load as you open the frontend in your browser; they are url links in Atlas (MongoDB) Cheers!
+
 Please check out the Backend Source Code for this Frontend: https://github.com/AlexanPetrov/gastrographbackend
 
 # React + Vite
