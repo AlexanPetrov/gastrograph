@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <script>
+      var basePath = "/gastrograph/";
+      var newPath = location.pathname.startsWith(basePath)
+        ? location.pathname
+        : basePath + location.pathname;
+      location.replace(newPath);
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
