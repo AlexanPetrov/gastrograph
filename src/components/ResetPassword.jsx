@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/ResetPassword.css'; 
+import '../styles/resetPassword.css'; 
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
