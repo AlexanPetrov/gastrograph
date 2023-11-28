@@ -71,7 +71,7 @@ try {
         <label htmlFor="message">Message:</label>
         <textarea 
           id="message" 
-          placeholder="Enter your message" 
+          placeholder="Enter your message (Free instance types will spin down with inactivity. Please, be patient!)" 
           value={message} 
           onChange={e => setMessage(e.target.value)} 
         />
