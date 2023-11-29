@@ -24,7 +24,6 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
 
 
   useEffect(() => {
-    // fetch('http://localhost:3000/recipes', {
       const backendUrl = 'https://gastrographbackend.onrender.com'; 
 
   fetch(`${backendUrl}/recipes`, {
@@ -60,7 +59,6 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
 
   if (loading) {
     return <p>Loading...</p>;
-    // return <p></p>;
   }
 
   const selectedRecipe = recipes.find((r) => r.id === recipeId);
@@ -101,13 +99,6 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   ) : null; 
   
   const handleRecipeSubmit = (newRecipe) => {
-    // fetch('http://localhost:3000/recipes', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(newRecipe),
-    // })
 
     const backendUrl = 'https://gastrographbackend.onrender.com'; 
 

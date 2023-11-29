@@ -28,7 +28,6 @@ const Form = ({ formType, onLogin }) => {
       password,
     };
 
-    // const url = formType === 'join' ? 'http://localhost:3000/auth/signup' : 'http://localhost:3000/auth/login';
     const backendUrl = 'https://gastrographbackend.onrender.com';
     const url = formType === 'join' ? `${backendUrl}/auth/signup` : `${backendUrl}/auth/login`;
 

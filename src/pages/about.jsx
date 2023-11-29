@@ -1,7 +1,5 @@
 import '../styles/about.css'
 
-// '../../public/romantic-couple.jpg'
-
 const About = () => {
 	return (
 		<div className="about-container">
