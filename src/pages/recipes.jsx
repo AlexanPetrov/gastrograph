@@ -11,49 +11,48 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   const [recipes, setRecipes] = useState([]);
   const [recipesPerPage, setRecipesPerPage] = useState(3);
   const [loading, setLoading] = useState(true);
-  const [initialLoad, setInitialLoad] = useState(true);
   const { recipeId } = useParams();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    onLogout(); 
-    navigate('/'); 
+    onLogout();
+    navigate('/');
   };
 
   useEffect(() => {
-    if (initialLoad) {
-      const backendUrl = 'https://gastrographbackend.onrender.com'; 
+    const hasFetched = localStorage.getItem('hasFetchedRecipes');
+
+    if (!hasFetched) {
+      const backendUrl = 'https://gastrographbackend.onrender.com';
 
       fetch(`${backendUrl}/recipes`, {
         credentials: 'include',
         method: 'GET',
       })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
-        }
-      })
-      .then(data => {
-        console.log("Fetched Data: ", data); 
-        setRecipes(data);
-        setLoading(false);
-        setInitialLoad(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error.message);
-        console.error("Stack trace:", error.stack);
-        setLoading(false);
-      });
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+          }
+        })
+        .then(data => {
+          console.log("Fetched Data: ", data);
+          setRecipes(data);
+          localStorage.setItem('hasFetchedRecipes', 'true');
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error.message);
+          console.error("Stack trace:", error.stack);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
     }
-  }, [recipesPerPage, initialLoad]);
-
-  useEffect(() => {
-    if (!initialLoad) {
-      window.location.reload();
-    }
-  }, [initialLoad]);
+  }, [recipesPerPage]);
 
   const displayedRecipes = recipes.slice(0, recipesPerPage);
 
@@ -100,10 +99,10 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     <div className="logout-button-container">
       <Button text="Log Out" onClick={handleLogout} className="button" />
     </div>
-  ) : null; 
+  ) : null;
 
   const handleRecipeSubmit = (newRecipe) => {
-    const backendUrl = 'https://gastrographbackend.onrender.com'; 
+    const backendUrl = 'https://gastrographbackend.onrender.com';
 
     fetch(`${backendUrl}/recipes`, {
       method: 'POST',
@@ -112,18 +111,18 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
       },
       body: JSON.stringify(newRecipe),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
-      }
-      return response.json();
-    })
-    .then(addedRecipe => {
-      setRecipes(prevRecipes => [...prevRecipes, addedRecipe]);
-    })
-    .catch(error => {
-      console.error("Error submitting new recipe:", error.message);
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(addedRecipe => {
+        setRecipes(prevRecipes => [...prevRecipes, addedRecipe]);
+      })
+      .catch(error => {
+        console.error("Error submitting new recipe:", error.message);
+      });
   };
 
   return (
@@ -154,6 +153,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
