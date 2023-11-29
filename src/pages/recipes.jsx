@@ -11,7 +11,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   const [recipes, setRecipes] = useState([]);
   const [recipesPerPage, setRecipesPerPage] = useState(3);
   const [loading, setLoading] = useState(true);
-  const [hasRefreshed, setHasRefreshed] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
   const { recipeId } = useParams();
   const navigate = useNavigate();
 
@@ -21,34 +21,39 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   };
 
   useEffect(() => {
-    if (!hasRefreshed) {
+    if (initialLoad) {
       const backendUrl = 'https://gastrographbackend.onrender.com'; 
 
       fetch(`${backendUrl}/recipes`, {
         credentials: 'include',
         method: 'GET',
       })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
-          }
-        })
-        .then(data => {
-          console.log("Fetched Data: ", data); 
-          setRecipes(data);
-          setLoading(false);
-          window.location.reload();
-          setHasRefreshed(true);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error.message);
-          console.error("Stack trace:", error.stack);
-          setLoading(false);
-        });
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+        }
+      })
+      .then(data => {
+        console.log("Fetched Data: ", data); 
+        setRecipes(data);
+        setLoading(false);
+        setInitialLoad(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error.message);
+        console.error("Stack trace:", error.stack);
+        setLoading(false);
+      });
     }
-  }, [hasRefreshed, recipesPerPage]);
+  }, [recipesPerPage, initialLoad]);
+
+  useEffect(() => {
+    if (!initialLoad) {
+      window.location.reload();
+    }
+  }, [initialLoad]);
 
   const displayedRecipes = recipes.slice(0, recipesPerPage);
 
@@ -57,7 +62,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   };
 
   if (loading) {
-    return <p></p>;
+    return <p>Loading...</p>;
   }
 
   const selectedRecipe = recipes.find((r) => r.id === recipeId);
@@ -125,9 +130,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     <>
       <div className='logoutBtn'>{logoutButton}</div>
       {isLoggedIn && (
-        <>
-          <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />
-        </>
+        <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />
       )}
       <div className="recipe-page">
         <div className="recipe-page-wrapper">
@@ -151,6 +154,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 // import { useState, useEffect } from 'react';
