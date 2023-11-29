@@ -35,6 +35,7 @@ const Home = () => {
   }, [recipes.length]);
 
   if (loading) {
+    // return <p></p>
     return <p>Loading...</p>; 
   }
 
