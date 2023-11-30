@@ -78,7 +78,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     );
   } else if (recipeId && !selectedRecipe) {
     return <NotFound />;
-  }   
+  }
 
   const logoutButton = isLoggedIn ? (
     <div className="logout-button-container">
@@ -115,19 +115,19 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
       <div className='logoutBtn'>{logoutButton}</div>
       {isLoggedIn && <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />}
       <div className="recipe-page">
-        {loading ? (
-          <div className="loading-container">
-            <div className="spinner"></div>
-          </div>
-        ) : (
-          <div className="recipe-page-wrapper">
-            {displayedRecipes.map((recipe) => (
+        <div className="recipe-page-wrapper">
+          {loading ? (
+            <div className="loading-container">
+              <div className="spinner"></div>
+            </div>
+          ) : (
+            displayedRecipes.map((recipe) => (
               <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
                 <RecipeCard recipe={recipe} />
               </Link>
-            ))}
-          </div>
-        )}
+            ))
+          )}
+        </div>
       </div>
       {!loading && (
         <div className="centered-button">
@@ -144,6 +144,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
