@@ -6,7 +6,7 @@ const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // New state for error handling
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -20,7 +20,7 @@ const Home = () => {
         setRecipes(data);
       } catch (error) {
         console.error('Error fetching recipes:', error);
-        setError(error); // Set error state
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -31,41 +31,49 @@ const Home = () => {
 
   useEffect(() => {
     let timer;
-    if (recipes.length > 0) { // Only set interval if recipes are loaded
+    if (recipes.length > 0) {
       timer = setInterval(() => {
         setCurrentImage((prevIndex) => (prevIndex + 1) % recipes.length);
       }, 5000);
     }
-    return () => timer && clearInterval(timer); // Clear interval on unmount or when recipes change
+    return () => timer && clearInterval(timer);
   }, [recipes.length]);
 
   const renderCarousel = () => {
     if (loading) {
-      return <p>Loading...</p>;
+      return (
+        <div className="loading-container">
+          <div className="spinner"></div>
+        </div>
+      );
     }
 
     if (error) {
-      return <p>Error loading recipes: {error.message}</p>; // Display error message
+      return <p>Error loading recipes: {error.message}</p>;
     }
 
-    return recipes.length > 0 ? (
+    return (
       <>
-        <Link to={`/recipes/${recipes[currentImage].id}`}>
-          <img src={recipes[currentImage].imageURL} 
-               alt={recipes[currentImage].title} 
-               title={recipes[currentImage].title}/>
-        </Link>
-        <div className="dots">
-          {recipes.map((_, index) => (
-            <span
-              key={index}
-              className={index === currentImage ? 'active-dot' : 'dot'}
-              onClick={() => setCurrentImage(index)}
-            />
-          ))}
-        </div>
+        {recipes.length > 0 ? (
+          <>
+            <Link to={`/recipes/${recipes[currentImage].id}`}>
+              <img src={recipes[currentImage].imageURL} 
+                   alt={recipes[currentImage].title} 
+                   title={recipes[currentImage].title}/>
+            </Link>
+            <div className="dots">
+              {recipes.map((_, index) => (
+                <span
+                  key={index}
+                  className={index === currentImage ? 'active-dot' : 'dot'}
+                  onClick={() => setCurrentImage(index)}
+                />
+              ))}
+            </div>
+          </>
+        ) : <p>No recipes available</p>}
       </>
-    ) : null;
+    );
   };
 
   return (
@@ -86,6 +94,7 @@ const Home = () => {
 }
 
 export default Home;
+
 
 
 
