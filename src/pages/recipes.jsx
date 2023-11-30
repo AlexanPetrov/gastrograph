@@ -78,7 +78,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     );
   } else if (recipeId && !selectedRecipe) {
     return <NotFound />;
-  }  
+  }   
 
   const logoutButton = isLoggedIn ? (
     <div className="logout-button-container">
@@ -103,7 +103,6 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
       return response.json();
     })
     .then(addedRecipe => {
-      // Update the recipes state to include the new recipe
       setRecipes(prevRecipes => [...prevRecipes, addedRecipe]);
     })
     .catch(error => {
@@ -117,8 +116,8 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
       {isLoggedIn && <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />}
       <div className="recipe-page">
         {loading ? (
-          <div className="recipe-page-wrapper loading">
-            <p>Loading...</p>
+          <div className="loading-container">
+            <div className="spinner"></div>
           </div>
         ) : (
           <div className="recipe-page-wrapper">
@@ -145,6 +144,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 // import { useState, useEffect } from 'react';
