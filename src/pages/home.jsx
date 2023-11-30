@@ -69,11 +69,13 @@ const Home = () => {
           </div>
         </div>
         <div className="welcome-text">
-          {/* Welcome text here */}
+        <p>
+           Welcome to Gastrograph! Explore delicious recipes and culinary delights from kitchens around the world. At Gastrograph, we believe in more than just food; we believe in stories, connections, and flavors that bring people together. Every recipe you find here carries a personal touch, a unique blend of tradition, innovation, and love. Whether you are a seasoned chef or a culinary novice, our hand-picked recipes are designed to inspire creativity and joy in your kitchen. From hearty family favorites to elegant gourmet creations, you will discover a world of tastes waiting to be explored. So why wait? Let your culinary journey begin with Gastrograph, where every dish tells a story.
+        </p>
         </div>
       </div>
       <div className='home-moral-class'>
-        {/* Moral class content here */}
+      <p>{'"To the ruler, the people are heaven; to the people, food is heaven." - Ancient Chinese Proverb'}</p>
       </div>
     </>
   );
