@@ -106,8 +106,8 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
             <div className="recipe-page-wrapper">
               {displayedRecipes}
             </div>
-            <div className="centered-button">
-              <Button text="See More Recipes" onClick={handleLoadMore} className="button" />
+            <div className="centered-button-container">
+              <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />
             </div>
           </>
         )}
@@ -122,6 +122,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 // import { useState, useEffect } from 'react';
