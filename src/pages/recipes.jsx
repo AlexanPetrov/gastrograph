@@ -43,7 +43,9 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   };
 
   const displayedRecipes = loading ? 
-    <p>Loading...</p> : 
+    <div className="loading-container">
+      <div className="spinner"></div>
+    </div> : 
     recipes.slice(0, recipesPerPage).map((recipe) => (
       <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
         <RecipeCard recipe={recipe} />
@@ -138,6 +140,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
