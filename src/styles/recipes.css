@@ -27,12 +27,12 @@
 
 
 
-.centered-button {
+.centered-button-container .centered-button {
   background-color: #00BCD4; /* Teal background */
   color: #ffffff; /* White text */
 }
 
-.centered-button:hover {
+.centered-button-container .centered-button:hover {
   background-color: #0097A7; /* Darker teal on hover */
 }
 
