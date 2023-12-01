@@ -1,10 +1,33 @@
-.centered-button-container {
+.recipe-page {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Change to column */
+  align-items: center; /* This ensures all children including the button container are centered */
+  padding-top: 25px;
+  margin: 30px;
+}
+
+.recipe-page-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  max-width: 100%; 
+  padding: 0; 
+  margin: auto;
+}
+
+.recipe-page-item {
+  flex: 1 0 30%; 
+  margin: 10px; 
+  box-sizing: border-box; 
+}
+
+.centered-button-container {
   margin-top: 20px; /* Adjust as needed */
 }
 
-.recipe-page {
+
+
+/* .recipe-page {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -25,4 +48,4 @@
     flex: 1 0 30%; 
     margin: 10px; 
     box-sizing: border-box; 
-}
+} */
