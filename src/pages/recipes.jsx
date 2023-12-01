@@ -98,7 +98,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+        throw Error(`Server responded with ${response.status}: ${response.statusText}`);
       }
       return response.json();
     })
@@ -108,7 +108,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     .catch(error => {
       console.error("Error submitting new recipe:", error.message);
     });
-  };  
+  };
 
   return (
     <>
@@ -144,6 +144,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
