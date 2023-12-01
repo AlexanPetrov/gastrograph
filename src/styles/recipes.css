@@ -25,16 +25,16 @@
   margin-top: 20px; /* Adjust as needed */
 }
 
-
-
-.centered-button {
+/* Target only buttons within the centered-button-container */
+.centered-button-container .button {
   background-color: #00BCD4; /* Teal background */
   color: #ffffff; /* White text */
 }
 
-.centered-button:hover {
+.centered-button-container .button:hover {
   background-color: #0097A7; /* Darker teal on hover */
 }
+
 
 /* .recipe-page {
     display: flex;
