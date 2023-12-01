@@ -34,7 +34,6 @@
   background-color: #0097A7; 
 }
 
-/* Spinner Styles */
 .loading-container {
   display: flex;
   justify-content: center;
@@ -59,28 +58,3 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-
-
-/* .recipe-page {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-top: 25px;
-    margin: 30px;
-  }
-
-  .recipe-page-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    max-width: 100%; 
-    padding: 0; 
-    margin: auto;
-}
-
-.recipe-page-item {
-    flex: 1 0 30%; 
-    margin: 10px; 
-    box-sizing: border-box; 
-} */
