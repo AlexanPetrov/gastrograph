@@ -15,7 +15,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const backendUrl = 'https://gastrographbackend.onrender.com'; 
+    const backendUrl = 'https://gastrographbackend.onrender.com';
     fetch(`${backendUrl}/recipes`, {
         credentials: 'include',
         method: 'GET',
@@ -42,14 +42,20 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     navigate('/'); 
   };
 
-  const displayedRecipes = recipes.slice(0, recipesPerPage);
+  const displayedRecipes = loading ? 
+    <p>Loading...</p> : 
+    recipes.slice(0, recipesPerPage).map((recipe) => (
+      <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
+        <RecipeCard recipe={recipe} />
+      </Link>
+    ));
 
   const handleLoadMore = () => {
     setRecipesPerPage(prev => prev + 3);
   };
 
   const handleRecipeSubmit = (newRecipe) => {
-    const backendUrl = 'https://gastrographbackend.onrender.com'; 
+    const backendUrl = 'https://gastrographbackend.onrender.com';
     fetch(`${backendUrl}/recipes`, {
       method: 'POST',
       headers: {
@@ -71,38 +77,9 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     });
   };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
   const selectedRecipe = recipes.find((r) => r.id === recipeId);
 
-  if (recipeId && selectedRecipe) {
-    return (
-      <div className="expanded-recipe-card">
-        <img className="expanded-recipe-card-img" src={selectedRecipe.imageURL} alt={selectedRecipe.title} />
-        <div className="expanded-recipe-card-details">
-          <h1>{selectedRecipe.title}</h1>
-          <h3>Ingredients:</h3>
-          <ul>
-            {selectedRecipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-          <h3>Instructions:</h3>
-          <ul>
-            {selectedRecipe.instructions.map((instruction, index) => (
-              <li key={index}>{instruction}</li>
-            ))}
-          </ul>
-          <h3>Author:</h3>
-          <p>{selectedRecipe.author}</p>
-          <h3>Date Shared:</h3>
-          <p>{new Date(selectedRecipe.date).toLocaleDateString()}</p>
-        </div>
-      </div>
-    );
-  } else if (recipeId && !selectedRecipe) {
+  if (recipeId && !selectedRecipe) {
     return <NotFound />;
   }
 
@@ -115,20 +92,41 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   return (
     <>
       <div className='logoutBtn'>{logoutButton}</div>
-      {isLoggedIn && (
-        <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />
-      )}
+      {isLoggedIn && <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />}
       <div className="recipe-page">
-        <div className="recipe-page-wrapper">
-          {displayedRecipes.map((recipe) => (
-            <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
-              <RecipeCard recipe={recipe} />
-            </Link>
-          ))}
-        </div>
-        <div className="centered-button-container">
-          <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />
-        </div>
+        {recipeId && selectedRecipe ? (
+          <div className="expanded-recipe-card">
+            <img className="expanded-recipe-card-img" src={selectedRecipe.imageURL} alt={selectedRecipe.title} />
+            <div className="expanded-recipe-card-details">
+              <h1>{selectedRecipe.title}</h1>
+              <h3>Ingredients:</h3>
+              <ul>
+                {selectedRecipe.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ul>
+              <h3>Instructions:</h3>
+              <ul>
+                {selectedRecipe.instructions.map((instruction, index) => (
+                  <li key={index}>{instruction}</li>
+                ))}
+              </ul>
+              <h3>Author:</h3>
+              <p>{selectedRecipe.author}</p>
+              <h3>Date Shared:</h3>
+              <p>{new Date(selectedRecipe.date).toLocaleDateString()}</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="recipe-page-wrapper">
+              {displayedRecipes}
+            </div>
+            <div className="centered-button-container">
+              <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />
+            </div>
+          </>
+        )}
       </div>
     </>
   );
@@ -140,6 +138,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
