@@ -6,7 +6,6 @@ import RecipeCard from '../components/RecipeCard.jsx';
 import RecipeUploadForm from '../components/RecipeUploadForm.jsx';
 import PropTypes from 'prop-types';
 import '../styles/recipes.css';
-import '../styles/recipesButton.css';
 
 const Recipes = ({ isLoggedIn, onLogout }) => {
   const [recipes, setRecipes] = useState([]);

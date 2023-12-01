@@ -25,6 +25,15 @@
   margin-top: 20px; /* Adjust as needed */
 }
 
+.centered-button .button {
+  background-color: #00BCD4; 
+  color: #ffffff;
+}
+
+.centered-button .button:hover {
+  background-color: #0097A7; 
+}
+
 
 
 /* .recipe-page {
