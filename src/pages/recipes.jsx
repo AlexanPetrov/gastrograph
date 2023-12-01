@@ -98,7 +98,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     })
     .then(response => {
       if (!response.ok) {
-        throw Error(`Server responded with ${response.status}: ${response.statusText}`);
+        throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
       }
       return response.json();
     })
@@ -128,11 +128,9 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
             ))
           )}
         </div>
-        {!loading && (
-          <div className="centered-button">
-            <Button text="See More Recipes" onClick={handleLoadMore} className="button" />
-          </div>
-        )}
+        <div className="centered-button">
+          <Button text="See More Recipes" onClick={handleLoadMore} className="button" />
+        </div>
       </div>
     </>
   );
@@ -144,6 +142,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
