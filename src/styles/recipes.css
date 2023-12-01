@@ -25,14 +25,15 @@
   margin-top: 20px; /* Adjust as needed */
 }
 
-.centered-button .button {
+.centered-button {
   background-color: #00BCD4; 
   color: #ffffff;
 }
 
-.centered-button .button:hover {
+.centered-button:hover {
   background-color: #0097A7; 
 }
+
 
 
 
