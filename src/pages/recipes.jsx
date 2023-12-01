@@ -79,6 +79,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   } else if (recipeId && !selectedRecipe) {
     return <NotFound />;
   }
+  
 
   const logoutButton = isLoggedIn ? (
     <div className="logout-button-container">
@@ -87,7 +88,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   ) : null;
 
   const handleRecipeSubmit = (newRecipe) => {
-    const backendUrl = 'https://gastrographbackend.onrender.com'; 
+    const backendUrl = 'https://gastrographbackend.onrender.com';
   
     fetch(`${backendUrl}/recipes`, {
       method: 'POST',
@@ -103,17 +104,21 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
       return response.json();
     })
     .then(addedRecipe => {
+      // Update the recipes state to include the new recipe
       setRecipes(prevRecipes => [...prevRecipes, addedRecipe]);
     })
     .catch(error => {
       console.error("Error submitting new recipe:", error.message);
     });
-  };  
+  };   
 
   return (
     <>
       <div className='logoutBtn'>{logoutButton}</div>
       {isLoggedIn && <RecipeUploadForm onRecipeSubmit={handleRecipeSubmit} />}
+      <div className="centered-button">
+        <Button text="See More Recipes" onClick={handleLoadMore} className="button" />
+      </div>
       <div className="recipe-page">
         <div className="recipe-page-wrapper">
           {loading ? (
@@ -129,11 +134,6 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
           )}
         </div>
       </div>
-      {!loading && (
-        <div className="centered-button">
-          <Button text="See More Recipes" onClick={handleLoadMore} className="button" />
-        </div>
-      )}
     </>
   );
 };
@@ -144,6 +144,7 @@ Recipes.propTypes = {
 };
 
 export default Recipes;
+
 
 
 
