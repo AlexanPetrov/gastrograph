@@ -125,7 +125,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
               {displayedRecipes}
             </div>
             <div className="centered-button-container">
-              <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />
+              {!loading && <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />}
             </div>
           </>
         )}
