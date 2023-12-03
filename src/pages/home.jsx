@@ -39,12 +39,26 @@ const Home = () => {
     return () => timer && clearInterval(timer);
   }, [recipes.length]);
 
+  // const renderCarousel = () => {
+  //   if (loading) {
+  //     return (
+  //       <div className="loading-container">
+  //         <div className="spinner"></div>
+  //         <p>Loading recipes... Free instance types will spin down with inactivity.</p>
+  //       </div>
+  //     );
+  //   }
+
   const renderCarousel = () => {
     if (loading) {
       return (
         <div className="loading-container">
-          <div className="spinner"></div>
-          <p>Loading recipes... Free instance types will spin down with inactivity.</p>
+          <div className="spinner-container">
+            <div className="spinner"></div>
+          </div>
+          <div className="loading-message">
+            <p>Loading recipes... Free instance types will spin down with inactivity.</p>
+          </div>
         </div>
       );
     }
