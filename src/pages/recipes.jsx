@@ -42,16 +42,6 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
     navigate('/'); 
   };
 
-  // const displayedRecipes = loading ? 
-  //   <div className="loading-container">
-  //     <div className="spinner"></div>
-  //   </div> : 
-  //   recipes.slice(0, recipesPerPage).map((recipe) => (
-  //     <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
-  //       <RecipeCard recipe={recipe} />
-  //     </Link>
-  //   ));
-
   const displayedRecipes = loading ? 
   <div className="loading-container">
     <div className="spinner-container">
