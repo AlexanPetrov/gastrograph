@@ -58,7 +58,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
       <div className="spinner"></div>
     </div>
     <div className="loading-message">
-      <p>Loading recipes... This may take a few moments.</p>
+    <p>Loading recipes... Free instance types will spin down with inactivity.</p>
     </div>
   </div> : 
   recipes.slice(0, recipesPerPage).map((recipe) => (
