@@ -36,6 +36,7 @@
 
 .loading-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -43,6 +44,12 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.loading-message {
+  margin-top: 10px; 
+  color: #00BCD4;
+  font-style: italic;
 }
 
 .spinner {
