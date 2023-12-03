@@ -45,6 +45,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
   const displayedRecipes = loading ? 
     <div className="loading-container">
       <div className="spinner"></div>
+      <p>Loading recipes... Free instance types will spin down with inactivity.</p>
     </div> : 
     recipes.slice(0, recipesPerPage).map((recipe) => (
       <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
@@ -125,7 +126,7 @@ const Recipes = ({ isLoggedIn, onLogout }) => {
               {displayedRecipes}
             </div>
             <div className="centered-button-container">
-              {!loading && <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />}
+              <Button text="See More Recipes" onClick={handleLoadMore} className="centered-button" />
             </div>
           </>
         )}

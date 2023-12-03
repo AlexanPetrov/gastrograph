@@ -44,6 +44,7 @@ const Home = () => {
       return (
         <div className="loading-container">
           <div className="spinner"></div>
+          <p>Loading recipes... Free instance types will spin down with inactivity.</p>
         </div>
       );
     }
